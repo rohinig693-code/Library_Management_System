@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            📚
+            <span>Library</span>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="#dashboard"
+               class="menu-item active"
+               onclick="showDashboard(event, this)">
+                🏠
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#libraryCollection"
+               class="menu-item"
+               onclick="showBooks(event, this)">
+                📚
+                <span>Manage Books</span>
+            </a>
+
+            <a href="#searchInput"
+               class="menu-item"
+               onclick="focusSearch(event, this)">
+                🔍
+                <span>Search Books</span>
+            </a>
+
+            <a href="users.html" class="menu-item">
+    👥
+    <span>Users</span>
+</a>
+
+        </nav>
+<div class="sidebar-bottom">
+
+   <a href="settings.html" class="menu-item">
+    ⚙️
+    <span>Settings</span>
+</a>
+
+    <a href="#" class="menu-item logout" onclick="logout(event)">
+        🚪
+        <span>Logout</span>
+    </a>
+
+</div>
+       
+    </aside>
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main-content" id="dashboard">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>
+                    Welcome back, Admin 👋
+                </p>
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="profile-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <small>Administrator</small>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ============================= -->
+        <!-- STATISTICS -->
+        <!-- ============================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div>
+                    <p>Total Books</p>
+                    <h2 id="totalBooks">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+                    <p>Available Books</p>
+                    <h2 id="availableBooks">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📖
+                </div>
+
+                <div>
+                    <p>Issued Books</p>
+                    <h2 id="issuedBooks">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👥
+                </div>
+
+                <div>
+                    <p>Total Users</p>
+                    <h2 id="totalUsers">0</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ============================= -->
+        <!-- BOOKS SECTION -->
+        <!-- ============================= -->
+
+        <section class="dashboard-section" id="libraryCollection">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Library Collection</h2>
+
+                    <p>
+                        Manage books in your library
+                    </p>
+                </div>
+
+                <button
+                    class="primary-button"
+                    onclick="openAddBookModal()">
+
+                    + Add Book
+
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search books by title, author or category..."
+                >
+
+                <button type="button">
+                    🔍
+                </button>
+
+            </div>
+
+
+            <!-- BOOKS TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Category</th>
+                            <th>ISBN</th>
+                            <th>Quantity</th>
+                            <th>Available</th>
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="booksTableBody">
+
+                        <tr>
+
+                            <td colspan="8">
+                                Loading books...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ============================= -->
+    <!-- ADD BOOK MODAL -->
+    <!-- ============================= -->
+
+    <div id="addBookModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>Add New Book</h2>
+
+                    <p>
+                        Add a book to your library collection
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-button"
+                    onclick="closeAddBookModal()">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <form id="addBookForm">
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Book Title</label>
+
+                        <input
+                            type="text"
+                            id="bookTitle"
+                            placeholder="Enter book title"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="dashboard-form-group">
+
+                        <label>Author</label>
+
+                        <input
+                            type="text"
+                            id="bookAuthor"
+                            placeholder="Enter author name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Category</label>
+
+                        <input
+                            type="text"
+                            id="bookCategory"
+                            placeholder="Enter category"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="dashboard-form-group">
+
+                        <label>ISBN</label>
+
+                        <input
+                            type="text"
+                            id="bookIsbn"
+                            placeholder="Enter ISBN"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Quantity</label>
+
+                        <input
+                            type="number"
+                            id="bookQuantity"
+                            placeholder="Enter quantity"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="closeAddBookModal()">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        Add Book
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================= -->
+    <!-- EDIT BOOK MODAL -->
+    <!-- ============================= -->
+
+    <div id="editBookModal" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>Edit Book</h2>
+
+                    <p>
+                        Update book information
+                    </p>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="close-button"
+                    onclick="closeEditBookModal()">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <form id="editBookForm">
+
+                <input
+                    type="hidden"
+                    id="editBookId"
+                >
+
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Book Title</label>
+
+                        <input
+                            type="text"
+                            id="editBookTitle"
+                            placeholder="Enter book title"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="dashboard-form-group">
+
+                        <label>Author</label>
+
+                        <input
+                            type="text"
+                            id="editBookAuthor"
+                            placeholder="Enter author name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Category</label>
+
+                        <input
+                            type="text"
+                            id="editBookCategory"
+                            placeholder="Enter category"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="dashboard-form-group">
+
+                        <label>ISBN</label>
+
+                        <input
+                            type="text"
+                            id="editBookIsbn"
+                            placeholder="Enter ISBN"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="dashboard-form-group">
+
+                        <label>Quantity</label>
+
+                        <input
+                            type="number"
+                            id="editBookQuantity"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="closeEditBookModal()">
+
+                        Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button">
+
+                        Update Book
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/app.js"></script>
+
+</body>
+
+</html>

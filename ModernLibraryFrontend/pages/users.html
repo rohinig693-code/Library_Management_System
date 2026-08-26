@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Library Management - Users</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            📚
+
+            <span>Library</span>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+
+            <a
+                href="admin-dashboard.html"
+                class="menu-item"
+            >
+
+                🏠
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="admin-dashboard.html#libraryCollection"
+                class="menu-item"
+            >
+
+                📚
+
+                <span>Manage Books</span>
+
+            </a>
+
+
+            <a
+                href="admin-dashboard.html#searchInput"
+                class="menu-item"
+            >
+
+                🔍
+
+                <span>Search Books</span>
+
+            </a>
+
+
+            <a
+                href="users.html"
+                class="menu-item active"
+            >
+
+                👥
+
+                <span>Users</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="settings.html"
+                class="menu-item"
+            >
+
+                ⚙️
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item logout"
+                onclick="logout(event)"
+            >
+
+                🚪
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1>
+                    Users
+                </h1>
+
+
+                <p>
+                    Manage library users
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+
+                <div class="profile-avatar">
+
+                    A
+
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Admin
+                    </strong>
+
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ============================= -->
+        <!-- USERS SECTION -->
+        <!-- ============================= -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <h2>
+                        Library Users
+                    </h2>
+
+
+                    <p>
+                        View registered users
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SEARCH USERS -->
+
+            <div class="search-box">
+
+
+                <input
+                    type="text"
+                    id="userSearchInput"
+                    placeholder="Search users by name or email..."
+                >
+
+
+                <button type="button">
+
+                    🔍
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- USERS TABLE -->
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Role</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTableBody">
+
+
+                        <tr>
+
+                            <td colspan="5">
+
+                                Loading users...
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="../js/users.js"></script>
+
+
+</body>
+
+</html>

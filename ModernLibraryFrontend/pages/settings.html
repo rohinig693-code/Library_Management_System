@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Library Management - Settings</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+<body class="dashboard-page">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            📚
+            <span>Library</span>
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <a href="admin-dashboard.html"
+               class="menu-item">
+                🏠
+                <span>Dashboard</span>
+            </a>
+
+            <a href="admin-dashboard.html"
+               class="menu-item">
+                📚
+                <span>Manage Books</span>
+            </a>
+
+            <a href="admin-dashboard.html"
+               class="menu-item">
+                🔍
+                <span>Search Books</span>
+            </a>
+
+            <a href="#"
+               class="menu-item">
+                👥
+                <span>Users</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="settings.html"
+               class="menu-item active">
+                ⚙️
+                <span>Settings</span>
+            </a>
+
+            <a href="login.html"
+               class="menu-item logout">
+                🚪
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Settings</h1>
+
+                <p>
+                    Manage your library system settings
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+                <div class="profile-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>Admin</strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- SETTINGS -->
+
+        <section class="dashboard-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>General Settings</h2>
+
+                    <p>
+                        Update your library information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="settings-form">
+
+                <div class="dashboard-form-group">
+
+                    <label>
+                        Library Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="libraryName"
+                        value="My Library"
+                    >
+
+                </div>
+
+
+                <div class="dashboard-form-group">
+
+                    <label>
+                        Admin Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="adminName"
+                        value="Admin"
+                    >
+
+                </div>
+
+
+                <div class="dashboard-form-group">
+
+                    <label>
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        value="admin@gmail.com"
+                    >
+
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        class="primary-button"
+                        onclick="saveSettings()">
+
+                        Save Settings
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function saveSettings() {
+
+            const libraryName =
+                document.getElementById("libraryName").value;
+
+            const adminName =
+                document.getElementById("adminName").value;
+
+            const adminEmail =
+                document.getElementById("adminEmail").value;
+
+
+            if (
+                libraryName.trim() === "" ||
+                adminName.trim() === "" ||
+                adminEmail.trim() === ""
+            ) {
+
+                alert("Please fill all fields");
+
+                return;
+
+            }
+
+
+            alert("Settings saved successfully!");
+
+        }
+
+    </script>
+
+</body>
+
+</html>

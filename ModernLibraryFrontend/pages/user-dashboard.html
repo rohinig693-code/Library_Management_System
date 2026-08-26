@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Library Management - User Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- ============================= -->
+    <!-- SIDEBAR -->
+    <!-- ============================= -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            📚
+
+            <span>Library</span>
+
+        </div>
+
+
+        <nav class="sidebar-menu">
+
+
+            <a
+                href="#dashboard"
+                class="menu-item active"
+                onclick="showUserDashboard(event, this)"
+            >
+
+                🏠
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a
+                href="#availableBooks"
+                class="menu-item"
+                onclick="showAvailableBooks(event, this)"
+            >
+
+                📚
+
+                <span>Available Books</span>
+
+            </a>
+
+
+            <a
+                href="#myBooks"
+                class="menu-item"
+                onclick="showMyBooks(event, this)"
+            >
+
+                📖
+
+                <span>My Books</span>
+
+            </a>
+
+
+            <a
+                href="#searchBooks"
+                class="menu-item"
+                onclick="showSearchBooks(event, this)"
+            >
+
+                🔍
+
+                <span>Search Books</span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="settings.html"
+                class="menu-item"
+            >
+
+                ⚙️
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="menu-item logout"
+                onclick="logout(event)"
+            >
+
+                🚪
+
+                <span>Logout</span>
+
+            </a>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
+
+    <main
+        class="main-content"
+        id="dashboard"
+    >
+
+
+        <!-- ============================= -->
+        <!-- TOP BAR -->
+        <!-- ============================= -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <h1 id="pageTitle">
+                    Dashboard
+                </h1>
+
+
+                <p id="pageSubtitle">
+
+                    Welcome back, User 👋
+
+                </p>
+
+            </div>
+
+
+            <div class="admin-profile">
+
+
+                <div class="profile-avatar">
+
+                    U
+
+                </div>
+
+
+                <div>
+
+                    <strong id="userName">
+                        User
+                    </strong>
+
+                    <small>
+                        Library Member
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ============================= -->
+        <!-- DASHBOARD HOME -->
+        <!-- ============================= -->
+
+        <div id="dashboardSection">
+
+
+            <!-- ============================= -->
+            <!-- STATISTICS -->
+            <!-- ============================= -->
+
+            <section class="stats-grid">
+
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        📚
+
+                    </div>
+
+
+                    <div>
+
+                        <p>Total Books</p>
+
+                        <h2 id="userTotalBooks">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        ✅
+
+                    </div>
+
+
+                    <div>
+
+                        <p>Available Books</p>
+
+                        <h2 id="userAvailableBooks">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+
+                    <div class="stat-icon">
+
+                        📖
+
+                    </div>
+
+
+                    <div>
+
+                        <p>My Books</p>
+
+                        <h2 id="myBooksCount">
+                            0
+                        </h2>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ============================= -->
+            <!-- QUICK ACTIONS -->
+            <!-- ============================= -->
+
+            <section class="dashboard-section">
+
+
+                <div class="section-header">
+
+
+                    <div>
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+
+                        <p>
+
+                            Quickly access your
+                            library features.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="quick-actions">
+
+
+                    <div
+                        class="quick-action-card"
+                        onclick="openAvailableBooks()"
+                    >
+
+                        <div class="quick-action-icon">
+
+                            📚
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Browse Books
+                            </h3>
+
+
+                            <p>
+                                View books available
+                                for borrowing.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div
+                        class="quick-action-card"
+                        onclick="openSearchBooks()"
+                    >
+
+                        <div class="quick-action-icon">
+
+                            🔍
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Search Books
+                            </h3>
+
+
+                            <p>
+                                Find a book by title,
+                                author or category.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div
+                        class="quick-action-card"
+                        onclick="openMyBooks()"
+                    >
+
+                        <div class="quick-action-icon">
+
+                            📖
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                My Books
+                            </h3>
+
+
+                            <p>
+                                View books currently
+                                borrowed by you.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ============================= -->
+            <!-- AVAILABLE BOOKS PREVIEW -->
+            <!-- ============================= -->
+
+            <section class="dashboard-section">
+
+
+                <div class="section-header">
+
+
+                    <div>
+
+                        <h2>
+                            Available Books
+                        </h2>
+
+
+                        <p>
+
+                            Books currently available
+                            in the library.
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        onclick="openAvailableBooks()"
+                    >
+
+                        View All Books
+
+                    </button>
+
+
+                </div>
+
+
+
+                <div class="table-container">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Title</th>
+
+                                <th>Author</th>
+
+                                <th>Category</th>
+
+                                <th>Available</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="dashboardBooksTableBody">
+
+
+                            <tr>
+
+                                <td colspan="6">
+
+                                    Loading books...
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- ============================= -->
+        <!-- AVAILABLE BOOKS PAGE -->
+        <!-- ============================= -->
+
+        <section
+            class="dashboard-section"
+            id="availableBooksSection"
+            style="display: none;"
+        >
+
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <h2>
+                        Available Books
+                    </h2>
+
+
+                    <p>
+                        Browse books available
+                        for borrowing.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Title</th>
+
+                            <th>Author</th>
+
+                            <th>Category</th>
+
+                            <th>ISBN</th>
+
+                            <th>Available</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="userBooksTableBody">
+
+
+                        <tr>
+
+                            <td colspan="7">
+
+                                Loading books...
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- MY BOOKS PAGE -->
+        <!-- ============================= -->
+
+        <section
+            class="dashboard-section"
+            id="myBooksSection"
+            style="display: none;"
+        >
+
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <h2>
+                        My Books
+                    </h2>
+
+
+                    <p>
+                        Books borrowed by you.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Book ID</th>
+
+                            <th>Title</th>
+
+                            <th>Author</th>
+
+                            <th>Borrowed Date</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="myBooksTableBody">
+
+
+                        <tr>
+
+                            <td colspan="6">
+
+                                You have not borrowed
+                                any books yet.
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- SEARCH PAGE -->
+        <!-- ============================= -->
+
+        <section
+            class="dashboard-section"
+            id="searchBooksSection"
+            style="display: none;"
+        >
+
+
+            <div class="section-header">
+
+
+                <div>
+
+                    <h2>
+                        Search Books
+                    </h2>
+
+
+                    <p>
+                        Find books in the library.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="search-box">
+
+
+                <input
+                    type="text"
+                    id="userSearchInput"
+                    placeholder="Search books by title, author or category..."
+                >
+
+
+                <button type="button">
+
+                    🔍
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="table-container">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Title</th>
+
+                            <th>Author</th>
+
+                            <th>Category</th>
+
+                            <th>ISBN</th>
+
+                            <th>Available</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="searchBooksTableBody">
+
+
+                        <tr>
+
+                            <td colspan="7">
+
+                                Search for a book.
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="../js/user.js"></script>
+
+
+</body>
+
+</html>
