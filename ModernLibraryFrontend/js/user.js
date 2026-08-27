@@ -1,8 +1,6 @@
-const API_URL = "http://localhost:8080/books";
-const USER_API = "http://localhost:8080/users";
-const BORROW_API = "http://localhost:8080/borrow";
-
-
+const API_URL = "https://library-management-system-sql9.onrender.com/books";
+const USER_API = "https://library-management-system-sql9.onrender.com/users";
+const BORROW_API = "https://library-management-system-sql9.onrender.com/borrow";
 // ========================================
 // PAGE LOAD
 // ========================================
