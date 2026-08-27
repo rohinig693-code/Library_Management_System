@@ -404,6 +404,7 @@ Authentication
 Git & GitHub
 Cloud Deployment
 Frontend–Backend Integration
-# 👩‍💻 Author
+---
 
-Rohini
+# 👩‍💻 Author
+Rohini B M
